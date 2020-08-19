@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="../part/head.jspf" %>
 
@@ -13,9 +12,7 @@
 		}
 
 		form.loginId.value = form.loginId.value.trim();
-		form.loginId.value = form.loginId.value.replaceAll('-', '');
-		form.loginId.value = form.loginId.value.replaceAll('_', '');
-		form.loginId.value = form.loginId.value.replaceAll(' ', '');
+		
 
 		if (form.loginId.value.length == 0) {
 			form.loginId.focus();
@@ -74,7 +71,7 @@
 
 		if (form.nickname.value.length == 0) {
 			form.nickname.focus();
-			alert('활동명을 입력해주세요.');
+			alert('닉네임을 입력해주세요.');
 
 			return;
 		}
@@ -106,7 +103,7 @@
 			return;
 		}
 
-		if (isCellphoneNo(form.cellphoneNo.value)) {
+		if (isCellphoneNo(form.cellphoneNo.value) == false) {
 			form.cellphoneNo.focus();
 			alert('휴대전화번호를 정확히 입력해주세요.');
 		}
@@ -119,9 +116,8 @@
 		MemberJoinForm__submitDone = true;
 	}
 </script>
-<form method="POST" class="table-box con form1" action="doJoin"
-	onsubmit="MemberJoinForm__submit(this); return false;">
-	<input type="hidden" name="redirectUri" value="/usr/member/login">
+<form method="POST" class="table-box con form1" action="doJoin" onsubmit="MemberJoinForm__submit(this); return false;">
+	<input type="hidden" name="redirectUri" value="/member/login">
 	<input type="hidden" name="loginPwReal">
 
 	<table>
@@ -188,7 +184,7 @@
 				<td>
 					<div class="form-control-box">
 						<input type="tel" placeholder="휴대전화번호를 입력해주세요." name="cellphoneNo"
-							maxlength="12" />
+							maxlength="11" />
 					</div>
 				</td>
 			</tr>
@@ -202,5 +198,5 @@
 		</tbody>
 	</table>
 </form>
-	
+
 <%@ include file="../part/foot.jspf" %>
